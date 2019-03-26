@@ -10,8 +10,12 @@
 
 # Maven
 target/
+
+# Log
 log/
 
 # Mac
 .DS_Store
 
+# Database file
+*.db
