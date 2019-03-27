@@ -1,5 +1,7 @@
 # SoftwareInnovation
 
+[![Build Status](https://travis-ci.org/sjtusoftwareinnovation/SIP_Server.svg?branch=master)](https://travis-ci.org/sjtusoftwareinnovation/SIP_Server)
+
 ## 简介
 
 这是一个web应用，整合了校内外的竞赛、项目和校企信息等。本仓库为该项目的server端，web端参见[这里](https://github.com/sjtusoftwareinnovation/SIP_Web)。
