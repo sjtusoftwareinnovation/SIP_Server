@@ -1,4 +1,4 @@
-package com.amateur.sip.server.request;
+package cn.edu.sjtu.sip_server.request;
 
 public class BusinessListRequest {
     /**

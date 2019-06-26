@@ -1,7 +1,8 @@
-package com.amateur.sip.server.response;
+package cn.edu.sjtu.sip_server.response;
 
-import com.amateur.sip.server.entity.Competition;
-import com.amateur.sip.server.entity.Team;
+
+import cn.edu.sjtu.sip_server.entity.Competition;
+import cn.edu.sjtu.sip_server.entity.Team;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import lombok.Data;
