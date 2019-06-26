@@ -1,4 +1,4 @@
-package com.amateur.sip.server.request;
+package cn.edu.sjtu.sip_server.request;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

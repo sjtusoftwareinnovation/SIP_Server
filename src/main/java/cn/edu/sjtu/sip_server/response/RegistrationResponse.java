@@ -1,6 +1,7 @@
-package com.amateur.sip.server.response;
+package cn.edu.sjtu.sip_server.response;
 
-import com.amateur.sip.server.entity.User;
+
+import cn.edu.sjtu.sip_server.entity.User;
 import io.swagger.annotations.Api;
 
 import java.util.List;

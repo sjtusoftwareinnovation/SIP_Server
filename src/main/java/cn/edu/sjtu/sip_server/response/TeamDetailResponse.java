@@ -1,7 +1,8 @@
-package com.amateur.sip.server.response;
+package cn.edu.sjtu.sip_server.response;
 
-import com.amateur.sip.server.entity.Team;
-import com.amateur.sip.server.vo.UserStatus;
+
+import cn.edu.sjtu.sip_server.entity.Team;
+import cn.edu.sjtu.sip_server.vo.UserStatus;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

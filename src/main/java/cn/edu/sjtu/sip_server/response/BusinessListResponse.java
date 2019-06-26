@@ -1,6 +1,6 @@
-package com.amateur.sip.server.response;
+package cn.edu.sjtu.sip_server.response;
 
-import com.amateur.sip.server.entity.BusinessNeed;
+import cn.edu.sjtu.sip_server.entity.BusinessNeed;
 import com.baomidou.mybatisplus.plugins.Page;
 import io.swagger.annotations.Api;
 

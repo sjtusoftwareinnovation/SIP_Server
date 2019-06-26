@@ -1,7 +1,8 @@
-package com.amateur.sip.server.request;
+package cn.edu.sjtu.sip_server.request;
 
-import com.amateur.sip.server.entity.Activity;
-import com.amateur.sip.server.entity.ActivityPublish;
+
+import cn.edu.sjtu.sip_server.entity.Activity;
+import cn.edu.sjtu.sip_server.entity.ActivityPublish;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
