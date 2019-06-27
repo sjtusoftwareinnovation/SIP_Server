@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.amateur.sip.server.mapper.BusinessNeedMapper">
+<mapper namespace="cn.edu.sjtu.sip_server.mapper.BusinessNeedMapper">
 
     <!-- general result map -->
-    <resultMap id="BaseResultMap" type="com.amateur.sip.server.entity.BusinessNeed">
+    <resultMap id="BaseResultMap" type="cn.edu.sjtu.sip_server.entity.BusinessNeed">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
         <result column="description" property="description"/>
@@ -26,7 +26,7 @@
         <result column="introduction" property="introduction"/>
     </resultMap>
 
-    <select id="findBusinessList" resultType="com.amateur.sip.server.entity.BusinessNeed">
+    <select id="findBusinessList" resultType="cn.edu.sjtu.sip_server.entity.BusinessNeed">
         SELECT id,name,img,type, introduction,amount,studentType,releaseUnit, registerEnd,releaseTime, pageview,status
         from business_need
         <where>
@@ -34,7 +34,7 @@
         </where>
     </select>
 
-    <select id="findDetailById" resultType="com.amateur.sip.server.entity.BusinessNeed">
+    <select id="findDetailById" resultType="cn.edu.sjtu.sip_server.entity.BusinessNeed">
         SELECT id,name, img, introduction, peopleNum,releaseUser,releaseUnit,registerEnd, description,type,registerUrl
         from business_need
         where id=#{id} and state=1

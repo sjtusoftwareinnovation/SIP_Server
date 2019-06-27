@@ -1,9 +1,10 @@
-package com.amateur.sip.server.service;
+package cn.edu.sjtu.sip_server.service;
 
-import com.amateur.sip.server.entity.BusinessComment;
-import com.amateur.sip.server.entity.BusinessNeed;
-import com.amateur.sip.server.request.BusinessListRequest;
-import com.amateur.sip.server.response.BusinessListResponse;
+
+import cn.edu.sjtu.sip_server.entity.BusinessComment;
+import cn.edu.sjtu.sip_server.entity.BusinessNeed;
+import cn.edu.sjtu.sip_server.request.BusinessListRequest;
+import cn.edu.sjtu.sip_server.response.BusinessListResponse;
 import com.baomidou.mybatisplus.service.IService;
 
 import java.util.List;

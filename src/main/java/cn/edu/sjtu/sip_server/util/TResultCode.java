@@ -4,6 +4,9 @@ import io.swagger.annotations.ApiModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @ApiModel
 public enum TResultCode {
 
@@ -54,6 +57,24 @@ public enum TResultCode {
     TResultCode(Integer code, String message) {
         this.code = code;
         this.message = message;
+    }
+
+    /**
+     * vertify the same code
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        TResultCode[] apiTResultCodes = TResultCode.values();
+        logger.info(apiTResultCodes[0].name());
+        List<Integer> codeList = new ArrayList<>();
+        for (TResultCode apiTResultCode : apiTResultCodes) {
+            if (codeList.contains(apiTResultCode.code)) {
+                logger.info("warning, find duplicate code:" + apiTResultCode.code);
+            } else {
+                codeList.add(apiTResultCode.getCode());
+            }
+        }
     }
 
     public Integer getCode() {

@@ -1,15 +1,16 @@
-package com.amateur.sip.server.service.impl;
+package cn.edu.sjtu.sip_server.service.impl;
 
-import com.amateur.sip.server.entity.Team;
-import com.amateur.sip.server.entity.TeamUser;
-import com.amateur.sip.server.mapper.TeamMapper;
-import com.amateur.sip.server.mapper.TeamUserMapper;
-import com.amateur.sip.server.response.TeamStatusResponse;
-import com.amateur.sip.server.service.TeamUserService;
-import com.amateur.sip.server.util.TResult;
-import com.amateur.sip.server.util.TResultCode;
-import com.amateur.sip.server.util.TeamUtil;
-import com.amateur.sip.server.vo.CompetitionUser;
+
+import cn.edu.sjtu.sip_server.entity.Team;
+import cn.edu.sjtu.sip_server.entity.TeamUser;
+import cn.edu.sjtu.sip_server.mapper.TeamMapper;
+import cn.edu.sjtu.sip_server.mapper.TeamUserMapper;
+import cn.edu.sjtu.sip_server.response.TeamStatusResponse;
+import cn.edu.sjtu.sip_server.service.TeamUserService;
+import cn.edu.sjtu.sip_server.util.TResult;
+import cn.edu.sjtu.sip_server.util.TResultCode;
+import cn.edu.sjtu.sip_server.util.TeamUtil;
+import cn.edu.sjtu.sip_server.vo.CompetitionUser;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;

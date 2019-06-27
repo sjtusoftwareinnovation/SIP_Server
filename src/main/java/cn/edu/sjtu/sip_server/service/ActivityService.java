@@ -1,12 +1,13 @@
-package com.amateur.sip.server.service;
+package cn.edu.sjtu.sip_server.service;
 
-import com.amateur.sip.server.entity.Activity;
-import com.amateur.sip.server.entity.ActivityJoin;
-import com.amateur.sip.server.request.ActivityListRequest;
-import com.amateur.sip.server.request.ActivityPublishRequest;
-import com.amateur.sip.server.request.ActivityWeightRequest;
-import com.amateur.sip.server.response.ActivityListResponse;
-import com.amateur.sip.server.response.RegistrationResponse;
+
+import cn.edu.sjtu.sip_server.entity.Activity;
+import cn.edu.sjtu.sip_server.entity.ActivityJoin;
+import cn.edu.sjtu.sip_server.request.ActivityListRequest;
+import cn.edu.sjtu.sip_server.request.ActivityPublishRequest;
+import cn.edu.sjtu.sip_server.request.ActivityWeightRequest;
+import cn.edu.sjtu.sip_server.response.ActivityListResponse;
+import cn.edu.sjtu.sip_server.response.RegistrationResponse;
 
 public interface ActivityService {
     /**

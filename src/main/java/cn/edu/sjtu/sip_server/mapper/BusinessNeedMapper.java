@@ -1,7 +1,6 @@
-package com.amateur.sip.server.mapper;
+package cn.edu.sjtu.sip_server.mapper;
 
-import com.amateur.sip.server.entity.BusinessComment;
-import com.amateur.sip.server.entity.BusinessNeed;
+import cn.edu.sjtu.sip_server.entity.BusinessNeed;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;

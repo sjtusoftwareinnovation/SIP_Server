@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.amateur.sip.server.mapper.TeamMapper">
+<mapper namespace="cn.edu.sjtu.sip_server.mapper.TeamMapper">
 
     <!-- general result map -->
-    <resultMap id="BaseResultMap" type="com.amateur.sip.server.entity.Team">
+    <resultMap id="BaseResultMap" type="cn.edu.sjtu.sip_server.entity.Team">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
         <result column="leader" property="leader"/>
@@ -42,10 +42,10 @@
     </select>
 
 
-    <resultMap id="teamDetailResponse" type="com.amateur.sip.server.response.TeamDetailResponse">
-        <association property="team" column="id" javaType="com.amateur.sip.server.entity.Team"
+    <resultMap id="teamDetailResponse" type="cn.edu.sjtu.sip_server.response.TeamDetailResponse">
+        <association property="team" column="id" javaType="cn.edu.sjtu.sip_server.entity.Team"
                      resultMap="BaseResultMap"/>
-        <collection property="userStatusList" ofType="com.amateur.sip.server.vo.UserStatus">
+        <collection property="userStatusList" ofType="cn.edu.sjtu.sip_server.vo.UserStatus">
             <id column="userId" property="id"/>
             <result column="username" property="username"/>
             <result column="email" property="email"/>
@@ -65,8 +65,8 @@
 
 
     <!--teamstatus result map-->
-    <resultMap id="teamStatusResultMap" type="com.amateur.sip.server.response.TeamStatusResponse">
-        <association property="team" column="id" javaType="com.amateur.sip.server.entity.Team"
+    <resultMap id="teamStatusResultMap" type="cn.edu.sjtu.sip_server.response.TeamStatusResponse">
+        <association property="team" column="id" javaType="cn.edu.sjtu.sip_server.entity.Team"
                      resultMap="BaseResultMap"/>
         <collection property="applyId" ofType="int">
             <id column="applyId" property="applyId"/>

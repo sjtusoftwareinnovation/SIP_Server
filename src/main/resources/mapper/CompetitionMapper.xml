@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.amateur.sip.server.mapper.CompetitionMapper">
+<mapper namespace="cn.edu.sjtu.sip_server.mapper.CompetitionMapper">
 
     <!-- general result map -->
-    <resultMap id="BaseResultMap" type="com.amateur.sip.server.entity.Competition">
+    <resultMap id="BaseResultMap" type="cn.edu.sjtu.sip_server.entity.Competition">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
         <result column="category" property="category"/>
@@ -32,7 +32,7 @@
         <result column="url" property="url"/>
     </resultMap>
 
-    <select id="findCompetitionList" resultType="com.amateur.sip.server.entity.Competition">
+    <select id="findCompetitionList" resultType="cn.edu.sjtu.sip_server.entity.Competition">
         SELECT c.id,c.name, c.organizer, c.img, c.bonus, c.registerEnd, c.description, c.releaseTime, c.type,c.host,c.url,
         c.status,count(tc.competitionId) as
         teamNum from competition c
@@ -63,7 +63,7 @@
         </if>
     </select>
 
-    <select id="findDetailById" resultType="com.amateur.sip.server.entity.Competition">
+    <select id="findDetailById" resultType="cn.edu.sjtu.sip_server.entity.Competition">
         SELECT c.id,name, url,organizer, img, bonus, registerEnd, description, releaseTime, type, status,count(c.id) as
         teamNum from competition c
         inner join team_competition tc on tc.competitionId = c.id
@@ -100,10 +100,10 @@ WHERE c.id=#{id} AND c.state=1 AND t.status>0;
     </select>
 
 
-    <resultMap id="competitionTeamResult" type="com.amateur.sip.server.response.CompetitionTeamResponse">
-        <association property="competition" column="id" javaType="com.amateur.sip.server.entity.Team"
+    <resultMap id="competitionTeamResult" type="cn.edu.sjtu.sip_server.response.CompetitionTeamResponse">
+        <association property="competition" column="id" javaType="cn.edu.sjtu.sip_server.entity.Team"
                      resultMap="BaseResultMap"/>
-        <collection property="teamList" ofType="com.amateur.sip.server.entity.Team">
+        <collection property="teamList" ofType="cn.edu.sjtu.sip_server.entity.Team">
             <id column="teamId" property="id"/>
             <result column="tName" property="name"/>
             <result column="leader" property="leader"/>
