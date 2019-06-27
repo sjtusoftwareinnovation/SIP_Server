@@ -1,6 +1,6 @@
-package com.amateur.sip.server.mapper;
+package cn.edu.sjtu.sip_server.mapper;
 
-import com.amateur.sip.server.entity.Project;
+import cn.edu.sjtu.sip_server.entity.Project;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import org.apache.ibatis.annotations.Mapper;

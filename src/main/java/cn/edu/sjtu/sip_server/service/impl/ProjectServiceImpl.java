@@ -1,13 +1,15 @@
-package com.amateur.sip.server.service.impl;
+package cn.edu.sjtu.sip_server.service.impl;
 
-import com.amateur.sip.server.constant.Const;
-import com.amateur.sip.server.entity.Project;
-import com.amateur.sip.server.entity.ProjectComment;
-import com.amateur.sip.server.mapper.ProjectCommentMapper;
-import com.amateur.sip.server.mapper.ProjectMapper;
-import com.amateur.sip.server.request.ProjectListRequest;
-import com.amateur.sip.server.response.ProjectListResponse;
-import com.amateur.sip.server.service.ProjectService;
+
+import cn.edu.sjtu.sip_server.constant.Const;
+import cn.edu.sjtu.sip_server.entity.Project;
+import cn.edu.sjtu.sip_server.entity.ProjectComment;
+import cn.edu.sjtu.sip_server.mapper.ProjectCommentMapper;
+import cn.edu.sjtu.sip_server.mapper.ProjectMapper;
+
+import cn.edu.sjtu.sip_server.request.ProjectListRequest;
+import cn.edu.sjtu.sip_server.response.ProjectListResponse;
+import cn.edu.sjtu.sip_server.service.ProjectService;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -45,6 +45,10 @@ public class TResult<T> {
         setResultCode(resultCode);
     }
 
+
+    /**
+     * @param resultCode
+     */
     private void setResultCode(TResultCode resultCode) {
         this.code = resultCode.getCode();
         this.message = resultCode.getMessage();

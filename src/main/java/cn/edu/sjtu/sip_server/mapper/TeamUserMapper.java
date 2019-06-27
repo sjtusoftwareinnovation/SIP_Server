@@ -1,7 +1,7 @@
-package com.amateur.sip.server.mapper;
+package cn.edu.sjtu.sip_server.mapper;
 
-import com.amateur.sip.server.entity.TeamUser;
-import com.amateur.sip.server.vo.CompetitionUser;
+import cn.edu.sjtu.sip_server.entity.TeamUser;
+import cn.edu.sjtu.sip_server.vo.CompetitionUser;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

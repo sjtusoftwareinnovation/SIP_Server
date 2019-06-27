@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.amateur.sip.server.mapper.ProjectCommentMapper">
+<mapper namespace="cn.edu.sjtu.sip_server.mapper.ProjectCommentMapper">
 
     <!-- general result map -->
-    <resultMap id="BaseResultMap" type="com.amateur.sip.server.entity.ProjectComment">
+    <resultMap id="BaseResultMap" type="cn.edu.sjtu.sip_server.entity.ProjectComment">
         <id column="id" property="id"/>
         <result column="projectId" property="projectId"/>
         <result column="userId" property="userId"/>
         <result column="content" property="content"/>
     </resultMap>
 
-    <select id="selectByProject" resultType="com.amateur.sip.server.entity.ProjectComment">
+    <select id="selectByProject" resultType="cn.edu.sjtu.sip_server.entity.ProjectComment">
         SELECT bc.*,u.username as username
         from project_comment bc inner join user u on bc.userId=u.id
         where bc.projectId=#{projectId}

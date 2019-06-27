@@ -1,14 +1,16 @@
-package com.amateur.sip.server.service.impl;
+package cn.edu.sjtu.sip_server.service.impl;
 
-import com.amateur.sip.server.entity.Competition;
-import com.amateur.sip.server.entity.CompetitionComment;
-import com.amateur.sip.server.entity.Team;
-import com.amateur.sip.server.mapper.CompetitionCommentMapper;
-import com.amateur.sip.server.mapper.CompetitionMapper;
-import com.amateur.sip.server.request.CompetitionListRequest;
-import com.amateur.sip.server.response.CompetitionListResponse;
-import com.amateur.sip.server.response.CompetitionTeamResponse;
-import com.amateur.sip.server.service.CompetitionService;
+
+import cn.edu.sjtu.sip_server.entity.Competition;
+import cn.edu.sjtu.sip_server.entity.CompetitionComment;
+import cn.edu.sjtu.sip_server.entity.Team;
+import cn.edu.sjtu.sip_server.mapper.CompetitionCommentMapper;
+import cn.edu.sjtu.sip_server.mapper.CompetitionMapper;
+
+import cn.edu.sjtu.sip_server.request.CompetitionListRequest;
+import cn.edu.sjtu.sip_server.response.CompetitionListResponse;
+import cn.edu.sjtu.sip_server.response.CompetitionTeamResponse;
+import cn.edu.sjtu.sip_server.service.CompetitionService;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

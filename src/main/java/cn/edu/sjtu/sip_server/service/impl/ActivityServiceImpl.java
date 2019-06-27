@@ -1,19 +1,21 @@
-package com.amateur.sip.server.service.impl;
+package cn.edu.sjtu.sip_server.service.impl;
 
-import com.amateur.sip.server.entity.Activity;
-import com.amateur.sip.server.entity.ActivityJoin;
-import com.amateur.sip.server.entity.ActivityPublish;
-import com.amateur.sip.server.entity.User;
-import com.amateur.sip.server.mapper.ActivityJoinMapper;
-import com.amateur.sip.server.mapper.ActivityMapper;
-import com.amateur.sip.server.mapper.ActivityPublishMapper;
-import com.amateur.sip.server.mapper.UserMapper;
-import com.amateur.sip.server.request.ActivityListRequest;
-import com.amateur.sip.server.request.ActivityPublishRequest;
-import com.amateur.sip.server.request.ActivityWeightRequest;
-import com.amateur.sip.server.response.ActivityListResponse;
-import com.amateur.sip.server.response.RegistrationResponse;
-import com.amateur.sip.server.service.ActivityService;
+
+import cn.edu.sjtu.sip_server.entity.Activity;
+import cn.edu.sjtu.sip_server.entity.ActivityJoin;
+import cn.edu.sjtu.sip_server.entity.ActivityPublish;
+import cn.edu.sjtu.sip_server.entity.User;
+import cn.edu.sjtu.sip_server.mapper.ActivityJoinMapper;
+import cn.edu.sjtu.sip_server.mapper.ActivityMapper;
+import cn.edu.sjtu.sip_server.mapper.ActivityPublishMapper;
+import cn.edu.sjtu.sip_server.mapper.UserMapper;
+
+import cn.edu.sjtu.sip_server.request.ActivityListRequest;
+import cn.edu.sjtu.sip_server.request.ActivityPublishRequest;
+import cn.edu.sjtu.sip_server.request.ActivityWeightRequest;
+import cn.edu.sjtu.sip_server.response.ActivityListResponse;
+import cn.edu.sjtu.sip_server.response.RegistrationResponse;
+import cn.edu.sjtu.sip_server.service.ActivityService;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

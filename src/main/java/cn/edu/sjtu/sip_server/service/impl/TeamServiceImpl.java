@@ -1,11 +1,12 @@
-package com.amateur.sip.server.service.impl;
+package cn.edu.sjtu.sip_server.service.impl;
 
-import com.amateur.sip.server.entity.Team;
-import com.amateur.sip.server.mapper.TeamMapper;
-import com.amateur.sip.server.response.TeamDetailResponse;
-import com.amateur.sip.server.response.TeamStatusResponse;
-import com.amateur.sip.server.service.TeamService;
-import com.amateur.sip.server.vo.UserStatus;
+
+import cn.edu.sjtu.sip_server.entity.Team;
+import cn.edu.sjtu.sip_server.mapper.TeamMapper;
+import cn.edu.sjtu.sip_server.response.TeamDetailResponse;
+import cn.edu.sjtu.sip_server.response.TeamStatusResponse;
+import cn.edu.sjtu.sip_server.service.TeamService;
+import cn.edu.sjtu.sip_server.vo.UserStatus;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

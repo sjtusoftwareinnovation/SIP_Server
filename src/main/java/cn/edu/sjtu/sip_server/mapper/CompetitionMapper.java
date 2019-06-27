@@ -1,7 +1,8 @@
-package com.amateur.sip.server.mapper;
+package cn.edu.sjtu.sip_server.mapper;
 
-import com.amateur.sip.server.entity.Competition;
-import com.amateur.sip.server.response.CompetitionTeamResponse;
+
+import cn.edu.sjtu.sip_server.entity.Competition;
+import cn.edu.sjtu.sip_server.response.CompetitionTeamResponse;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;

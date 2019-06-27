@@ -1,7 +1,6 @@
-package com.amateur.sip.server.service;
+package cn.edu.sjtu.sip_server.service;
 
-import com.amateur.sip.server.entity.User;
-import com.amateur.sip.server.response.TeamStatusResponse;
+import cn.edu.sjtu.sip_server.entity.User;
 import com.baomidou.mybatisplus.service.IService;
 
 import java.util.List;

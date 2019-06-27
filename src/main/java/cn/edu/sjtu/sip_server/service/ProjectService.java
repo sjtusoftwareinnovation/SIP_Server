@@ -1,9 +1,9 @@
-package com.amateur.sip.server.service;
+package cn.edu.sjtu.sip_server.service;
 
-import com.amateur.sip.server.entity.Project;
-import com.amateur.sip.server.entity.ProjectComment;
-import com.amateur.sip.server.request.ProjectListRequest;
-import com.amateur.sip.server.response.ProjectListResponse;
+import cn.edu.sjtu.sip_server.entity.Project;
+import cn.edu.sjtu.sip_server.entity.ProjectComment;
+import cn.edu.sjtu.sip_server.request.ProjectListRequest;
+import cn.edu.sjtu.sip_server.response.ProjectListResponse;
 import com.baomidou.mybatisplus.service.IService;
 
 import java.util.List;

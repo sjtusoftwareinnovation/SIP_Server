@@ -3,7 +3,7 @@
 <mapper namespace="com.amateur.sip.server.mapper.ConfigurationMapper">
 
     <!-- general result map -->
-    <resultMap id="BaseResultMap" type="com.amateur.sip.server.entity.Configuration">
+    <resultMap id="BaseResultMap" type="cn.edu.sjtu.sip_server.entity.Configuration">
         <id column="id" property="id"/>
         <result column="picture" property="picture"/>
         <result column="email" property="email"/>

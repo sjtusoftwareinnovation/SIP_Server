@@ -1,8 +1,8 @@
-package com.amateur.sip.server.service;
+package cn.edu.sjtu.sip_server.service;
 
-import com.amateur.sip.server.entity.TeamUser;
-import com.amateur.sip.server.util.TResult;
-import com.amateur.sip.server.vo.CompetitionUser;
+import cn.edu.sjtu.sip_server.entity.TeamUser;
+import cn.edu.sjtu.sip_server.util.TResult;
+import cn.edu.sjtu.sip_server.vo.CompetitionUser;
 import com.baomidou.mybatisplus.service.IService;
 
 import java.util.List;
