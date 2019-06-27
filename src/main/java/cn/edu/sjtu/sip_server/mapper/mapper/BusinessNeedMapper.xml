@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.amateur.sip.server.mapper.BusinessNeedMapper">
+
+    <!-- general result map -->
+    <resultMap id="BaseResultMap" type="com.amateur.sip.server.entity.BusinessNeed">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="source" property="source"/>
+        <result column="type" property="type"/>
+        <result column="studentType" property="studentType"/>
+        <result column="amount" property="amount"/>
+        <result column="releaseTime" property="releaseTime"/>
+        <result column="registerBegin" property="registerBegin"/>
+        <result column="registerEnd" property="registerEnd"/>
+        <result column="pageview" property="pageview"/>
+        <result column="category" property="category"/>
+        <result column="status" property="status"/>
+        <result column="releaseUnit" property="releaseUnit"/>
+        <result column="releaseUser" property="releaseUser"/>
+        <result column="university" property="university"/>
+        <result column="img" property="img"/>
+        <result column="registerUrl" property="registerUrl"/>
+        <result column="peopleNum" property="peopleNum"/>
+        <result column="introduction" property="introduction"/>
+    </resultMap>
+
+    <select id="findBusinessList" resultType="com.amateur.sip.server.entity.BusinessNeed">
+        SELECT id,name,img,type, introduction,amount,studentType,releaseUnit, registerEnd,releaseTime, pageview,status
+        from business_need
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <select id="findDetailById" resultType="com.amateur.sip.server.entity.BusinessNeed">
+        SELECT id,name, img, introduction, peopleNum,releaseUser,releaseUnit,registerEnd, description,type,registerUrl
+        from business_need
+        where id=#{id} and state=1
+    </select>
+
+    <update id="updateNotBegin">
+        update business_need set status="进行中"
+         where status="未开始" and CURRENT_TIMESTAMP>registerBegin and registerEnd>CURRENT_TIMESTAMP
+    </update>
+
+
+    <update id="updateOngoing">
+        update business_need set status="已结束"
+         where  CURRENT_TIMESTAMP>registerEnd
+    </update>
+
+    <update id="updatePageview">
+        update business_need set pageview=pageview+#{increment}
+         where  id=#{id}
+    </update>
+</mapper>

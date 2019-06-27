@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.amateur.sip.server.mapper.TeamMapper">
+
+    <!-- general result map -->
+    <resultMap id="BaseResultMap" type="com.amateur.sip.server.entity.Team">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="leader" property="leader"/>
+        <result column="description" property="description"/>
+        <result column="status" property="status"/>
+        <result column="validTime" property="validTime"/>
+        <result column="qq" property="qq"/>
+        <result column="competitionId" property="competitionId"/>
+    </resultMap>
+
+    <select id="selectTeamDetail" parameterType="int" resultMap="teamDetailResponse">
+        SELECT t.id AS id,t.name AS name,t.leader AS leader,
+        t.description AS description,
+        t.status AS status,t.validTime AS validTime,t.qq AS qq,
+        t.competitionId AS competitionId,u.id AS userId,u.username AS username,
+        u.password AS password,u.role AS role,u.qq AS uqq,
+        u.avatar AS avatar,u.wechatCode AS wechatCode,u.isValid AS isValid,
+        u.email AS email,
+        tu.status AS uStatus,tu.id AS applyId
+        FROM team  t LEFT OUTER JOIN team_user tu  ON t.id=tu.teamId,user u
+        WHERE tu.userId=u.id  and t.id=#{teamId} AND t.status>0 AND tu.status>=-2;
+    </select>
+
+    <select id="selectAllTeamDetail" resultMap="teamDetailResponse">
+        SELECT t.id AS id,t.name AS name,t.leader AS leader,
+        t.description AS description,
+        t.status AS status,t.validTime AS validTime,t.qq AS qq,
+        t.competitionId AS competitionId,u.id AS userId,u.username AS username,
+        u.password AS password,u.role AS role,u.qq AS uqq,
+        u.avatar AS avatar,u.wechatCode AS wechatCode,u.isValid AS isValid,
+        u.email AS email,
+        tu.status AS uStatus,tu.id AS applyId,
+         c.name AS competitionName
+        FROM team  t LEFT OUTER JOIN team_user tu  ON t.id=tu.teamId,user u,competition c
+        WHERE tu.userId=u.id AND t.status>0 AND tu.status>=-2 AND c.id=t.competitionId;
+    </select>
+
+
+    <resultMap id="teamDetailResponse" type="com.amateur.sip.server.response.TeamDetailResponse">
+        <association property="team" column="id" javaType="com.amateur.sip.server.entity.Team"
+                     resultMap="BaseResultMap"/>
+        <collection property="userStatusList" ofType="com.amateur.sip.server.vo.UserStatus">
+            <id column="userId" property="id"/>
+            <result column="username" property="username"/>
+            <result column="email" property="email"/>
+            <result column="password" property="password"/>
+            <result column="role" property="role"/>
+            <result column="uqq" property="qq"/>
+            <result column="avatar" property="avatar"/>
+            <result column="wechatCode" property="wechatCode"/>
+            <result column="isValid" property="isValid"/>
+            <result column="uStatus" property="status"/>
+            <result column="applyId" property="applyId"/>
+        </collection>
+        <collection property="competitionName" ofType="java.lang.String">
+            <id column="competitionName" property="competitionName"/>
+        </collection>
+    </resultMap>
+
+
+    <!--teamstatus result map-->
+    <resultMap id="teamStatusResultMap" type="com.amateur.sip.server.response.TeamStatusResponse">
+        <association property="team" column="id" javaType="com.amateur.sip.server.entity.Team"
+                     resultMap="BaseResultMap"/>
+        <collection property="applyId" ofType="int">
+            <id column="applyId" property="applyId"/>
+        </collection>
+        <collection property="tstatus" ofType="int">
+            <id column="tstatus" property="tstatus"/>
+        </collection>
+    </resultMap>
+
+    <!--<select id="selectTeamStatus" resultMap="teamStatusResultMap" parameterType="int">-->
+    <!--SELECT DISTINCT t.id AS id,t.name AS NAME,t.leader AS leader,t.description AS description,t.status AS status,-->
+    <!--t.validTime AS validTime,t.qq AS qq,t.competitionId AS competitionId,tu.status AS tstatus-->
+    <!--FROM team_user tu  right outer join team t  ON tu.teamId=t.id-->
+    <!--WHERE  tu.userId=#{userId};-->
+    <!--</select>-->
+
+    <select id="selectTeamStatus" resultMap="teamDetailResponse" parameterType="int">
+     SELECT t.id AS id,t.name AS name,t.leader AS leader,
+       t.description AS description,
+       t.status AS status,t.validTime AS validTime,t.qq AS qq,
+       t.competitionId AS competitionId,u.id AS userId,u.username AS username,
+       u.password AS password,u.role AS role,u.qq AS uqq,
+       u.avatar AS avatar,u.wechatCode AS wechatCode,u.isValid AS isValid,
+       u.email AS email,
+       tu.status AS uStatus,tu.id AS applyId,
+       c.name AS competitionName
+FROM team  t LEFT OUTER JOIN team_user tu  ON t.id=tu.teamId,user u,competition c
+WHERE tu.userId=u.id
+      AND t.status>0
+      AND tu.status>=-2
+      AND t.id IN (SELECT DISTINCT t.id AS id
+                   FROM team_user tu  right outer join team t  ON tu.teamId=t.id
+                   WHERE  tu.userId=#{userId} );
+    </select>
+
+    <select id="selectCompetitionTeamStatus" resultMap="teamStatusResultMap" parameterType="int">
+      SELECT DISTINCT t.id AS id,t.name AS NAME,t.leader AS leader,t.description AS description,t.status AS status,
+        t.validTime AS validTime,t.qq AS qq,t.competitionId AS competitionId, tu.status AS tstatus,tu.id AS applyId
+        FROM team_user tu  right outer join team t  ON tu.teamId=t.id
+        WHERE t.competitionId=#{competitionId} AND tu.userId=#{userId};
+    </select>
+
+</mapper>

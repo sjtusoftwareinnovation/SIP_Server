@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.amateur.sip.server.mapper.ActivityMapper">
+
+
+    <resultMap id="BaseResultMap" type="com.amateur.sip.server.entity.Activity">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="description" property="description"/>
+        <result column="status" property="status"/>
+        <result column="number_limit" property="number_limit"/>
+        <result column="register_begin" property="register_begin"/>
+        <result column="register_end" property="registerEnd"/>
+        <result column="host" property="host"/>
+        <result column="cover_pic" property="cover_pic"/>
+        <result column="location" property="location"/>
+        <result column="like_num" property="like_num"/>
+        <result column="activity_begin" property="activity_begin"/>
+        <result column="activity_end" property="activity_end"/>
+        <result column="is_valid" property="is_valid"/>
+        <result column="release_time" property="release_time"/>
+        <result column="pageview" property="pageview"/>
+        <result column="weight" property="weight"/>
+        <result column="type_id" property="type_id"/>
+        <result column="level_id" property="level_id"/>
+        <result column="category_id" property="category_id"/>
+    </resultMap>
+
+    <select id="findActivityList" resultType="com.amateur.sip.server.entity.Activity">
+        SELECT *
+        from activity
+        where is_valid=1
+        <if test="status!=null">
+            AND status = #{status}
+        </if>
+        <if test="typeId!=null">
+            AND type_id= #{typeId}
+        </if>
+        <if test="levelId!=null">
+            AND level_id= #{levelId}
+        </if>
+        <if test="categoryId!=null">
+            AND category_id= #{categoryId}
+        </if>
+        <if test="name!=null">
+            AND name like concat('%',#{name},'%')
+        </if>
+        order by status,weight
+        <if test="orderBy!=null">
+            ,${orderBy} DESC
+        </if>
+    </select>
+
+    <select id="findPublished" resultType="com.amateur.sip.server.entity.Activity">
+        SELECT a.*
+        from activity a
+        left join activity_publish aj on aj.activity_id = a.id
+        where a.is_valid=1 AND aj.user_id=#{userId}
+    </select>
+
+    <select id="findJoined" resultType="com.amateur.sip.server.entity.Activity">
+        SELECT a.*
+        from activity a
+        left join activity_join aj on aj.activity_id = a.id
+        where a.is_valid=1 AND aj.user_id=#{userId}
+    </select>
+
+    <select id="findRegistration" resultType="com.amateur.sip.server.entity.User">
+        SELECT u.*
+        from user u
+        left join activity_join aj on aj.user_id = u.id
+        where aj.activity_id=#{activityId}
+    </select>
+</mapper>

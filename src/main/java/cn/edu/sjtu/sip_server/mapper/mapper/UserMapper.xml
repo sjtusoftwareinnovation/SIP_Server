@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.amateur.sip.server.mapper.UserMapper">
+
+    <!-- general result map -->
+    <resultMap id="BaseResultMap" type="com.amateur.sip.server.entity.User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="email" property="email"/>
+        <result column="password" property="password"/>
+        <result column="role" property="role"/>
+        <result column="qq" property="qq"/>
+        <result column="avatar" property="avatar"/>
+        <result column="wechatCode" property="wechatCode"/>
+        <result column="isValid" property="isValid"/>
+    </resultMap>
+
+
+    <select id="selectAllTeamDetail" resultMap="BaseResultMap">
+        SELECT t.id AS id,t.name AS name,t.leader AS leader,
+        t.description AS description,
+        t.status AS status,t.validTime AS validTime,t.qq AS qq,
+        t.competitionId AS competitionId,u.id AS userId,u.username AS username,
+        u.password AS password,u.role AS role,u.qq AS qq,
+        u.avatar AS avatar,u.wechatCode AS wechatCode,u.isValid AS isValid,
+        u.email AS email
+        FROM team  t LEFT OUTER JOIN team_user tu  ON t.id=tu.teamId,user u
+        WHERE tu.userId=u.id ;
+    </select>
+
+
+
+
+
+
+
+</mapper>

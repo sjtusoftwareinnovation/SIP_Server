@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.amateur.sip.server.mapper.ProjectMapper">
+
+    <!-- general result map -->
+    <resultMap id="BaseResultMap" type="com.amateur.sip.server.entity.Project">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="host" property="host"/>
+        <result column="organizer" property="organizer"/>
+        <result column="source" property="source"/>
+        <result column="type" property="type"/>
+        <result column="area" property="area"/>
+        <result column="cover" property="cover"/>
+        <result column="registerBegin" property="registerBegin"/>
+        <result column="registerEnd" property="registerEnd"/>
+        <result column="releaseTime" property="releaseTime"/>
+        <result column="projectBegin" property="projectBegin"/>
+        <result column="projectEnd" property="projectEnd"/>
+        <result column="pageview" property="pageview"/>
+        <result column="status" property="status"/>
+        <result column="releaseUser" property="releaseUser"/>
+        <result column="description" property="description"/>
+        <result column="undertaker" property="undertaker"/>
+        <result column="university" property="university"/>
+        <result column="personNum" property="personNum"/>
+        <result column="contact" property="contact"/>
+    </resultMap>
+
+    <!--获取项目列表-->
+    <select id="findProjectList" resultType="com.amateur.sip.server.entity.Project">
+        SELECT p.id,`name`,
+        organizer,source,`type`,area,registerBegin,registerEnd,releaseTime,projectBegin,projectEnd,pageview,
+        status,releaseUser,description,undertaker,university,personNum,cover,contact
+        from project p
+        WHERE 1=1
+        <if test="area!=null">
+            AND p.area = #{area}
+        </if>
+        <if test="type!=null">
+            AND p.type = #{type}
+        </if>
+        <if test="status!=null">
+            AND p.status = #{status}
+        </if>
+        <if test="name!=null">
+            AND p.name like concat('%',#{name},'%')
+        </if>
+        <if test="releaseTime!=null">
+            AND p.releaseTime = #{releaseTime}
+        </if>
+        <if test="pageView!=0">
+            AND p.pageView = #{pageView}
+        </if>
+        <if test="registerEnd!=null">
+            AND p.registerEnd = #{registerEnd}
+        </if>
+        <if test="orderBy!=null">
+            order by ${orderBy} DESC
+        </if>
+    </select>
+
+    <!--<update id="updateNotBegin">-->
+        <!--update project set status=-->
+         <!--where status=2 and CURRENT_TIMESTAMP>registerBegin and registerEnd>CURRENT_TIMESTAMP-->
+    <!--</update>-->
+
+    <update id="updateOngoing">
+        update project set status=1
+        where CURRENT_TIMESTAMP>projectBegin and projectEnd>CURRENT_TIMESTAMP
+    </update>
+    <update id="updateFinish">
+        update project set status=0
+        where   CURRENT_TIMESTAMP >projectEnd
+    </update>
+
+    <update id="updatePageview">
+        update project set pageview=pageview+#{increment}
+         where  id=#{id}
+    </update>
+
+    <select id="searchProject" resultMap="BaseResultMap">
+SELECT p.id,p.`name`,
+       p.organizer,p.source,p.`type`,p.area,p.registerBegin,p.registerEnd,p.releaseTime,
+       p.projectBegin,p.projectEnd,p.pageview,
+       p.status,p.releaseUser,p.description,p.undertaker,p.university,p.personNum,p.cover,
+       p.contact
+from project p join unit u on p.undertaker=u.id,university un,user
+where p.university=un.id
+  and p.releaseUser=user.id
+  and (p.id like  concat('%',#{content},'%')
+   or p.name like  concat('%',#{content},'%')
+   or p.organizer like  concat('%',#{content},'%')
+   or p.source like  concat('%',#{content},'%')
+   or p.area like  concat('%',#{content},'%')
+   or p.pageview like  concat('%',#{content},'%')
+   or user.username  like  concat('%',#{content},'%')
+   or p.description like  concat('%',#{content},'%')
+   or u.name like  concat('%',#{content},'%')
+   or un.name like  concat('%',#{content},'%')
+   or p.personNum like  concat('%',#{content},'%')
+   or p.contact like  concat('%',#{content},'%') ) ;
+    </select>
+
+
+</mapper>

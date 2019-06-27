@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.amateur.sip.server.mapper.TeamUserMapper">
+
+    <!-- general result map -->
+    <resultMap id="BaseResultMap" type="com.amateur.sip.server.entity.TeamUser">
+        <id column="id" property="id"/>
+        <result column="teamId" property="teamId"/>
+        <result column="userId" property="userId"/>
+        <result column="status" property="status"/>
+    </resultMap>
+
+    <select id="selectCompetitionUser" parameterType="int" resultMap="existCompetition">
+       SELECT t1.competitionId,
+          t1.id AS teamId,
+          tu1.userId,
+          tu1.status
+              FROM (SELECT t.competitionId AS competitionId
+                    FROM team_user tu JOIN team t ON tu.teamId = t.id
+                    WHERE tu.status = #{status} AND tu.userId = #{userId} AND tu.teamId = #{teamId} AND t.status>0 ) s,
+        team_user tu1 JOIN team t1 ON tu1.teamId = t1.id
+WHERE s.competitionId =t1.competitionId AND tu1.userId=#{userId} AND t1.status>0;
+    </select>
+
+    <resultMap id="existCompetition" type="com.amateur.sip.server.vo.CompetitionUser">
+        <result column="competitionId" property="competitionId"/>
+        <result column="teamId" property="teamId"/>
+        <result column="userId" property="userId"/>
+        <result column="status" property="status"/>
+    </resultMap>
+</mapper>
